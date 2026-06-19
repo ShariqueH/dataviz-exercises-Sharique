@@ -78,7 +78,7 @@ fig3 = px.bar(
     y='Score',
     color='Score',
     color_continuous_scale='RdBu',          # The diverging color scale
-    color_continuous_midpoint=global_avg,   
+    color_continuous_midpoint=global_avg,   # Anchors the color transition here
     labels={'Score': 'Happiness Score (0-10)', 'Country': ''}
 )
 
@@ -97,8 +97,17 @@ fig3.add_hline(
 fig3.update_layout(
     plot_bgcolor='white', 
     paper_bgcolor='white',
-    xaxis=dict(showgrid=False),
-    yaxis=dict(showgrid=True, gridcolor='#020202'),
+    xaxis=dict(
+        showgrid=False,
+        title_font=dict(color='#1a1919'),
+        tickfont=dict(color='#1a1919')
+    ),
+    yaxis=dict(
+        showgrid=True,
+        gridcolor='#182c32',
+        title_font=dict(color='#1a1919'),
+        tickfont=dict(color='#1a1919')
+    ),
     margin=dict(l=20, r=20, t=40, b=20)
 )
 fig3.update_traces(marker_line_width=0)
