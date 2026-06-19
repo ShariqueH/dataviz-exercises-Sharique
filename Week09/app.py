@@ -98,7 +98,7 @@ fig3.update_layout(
     plot_bgcolor='white', 
     paper_bgcolor='white',
     xaxis=dict(showgrid=False),
-    yaxis=dict(showgrid=True, gridcolor='#EEEEEE'),
+    yaxis=dict(showgrid=True, gridcolor='#020202'),
     margin=dict(l=20, r=20, t=40, b=20)
 )
 fig3.update_traces(marker_line_width=0)
