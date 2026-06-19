@@ -2,11 +2,19 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+from pathlib import Path
+
 st.set_page_config(page_title="World Happiness", page_icon="🌍", layout="wide")
 
-df = pd.read_csv('/Users/shariqueh/Desktop/Data Visualization - UE/data/world_happiness_2023.csv')
+repo_data_path = Path(__file__).parent.parent / "data" / "world_happiness_2023.csv"
+local_data_path = Path(__file__).parent.parent.parent / "data" / "world_happiness_2023.csv"
+
+DATA_PATH = repo_data_path if repo_data_path.exists() else local_data_path
+
+df = pd.read_csv(DATA_PATH)
 df.columns = ['Country','Region','Score','GDP','Social_Support',
               'Life_Expectancy','Freedom','Generosity','Corruption']
+
 
 with st.sidebar:
     st.header("Filters")
@@ -70,7 +78,7 @@ fig3 = px.bar(
     y='Score',
     color='Score',
     color_continuous_scale='RdBu',          # The diverging color scale
-    color_continuous_midpoint=global_avg,   # Anchors the color transition here
+    color_continuous_midpoint=global_avg,   
     labels={'Score': 'Happiness Score (0-10)', 'Country': ''}
 )
 
